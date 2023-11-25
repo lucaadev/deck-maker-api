@@ -7,7 +7,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "tsc ./src/config/config.ts && nodemon src/server.ts",
+    "start": "tsc src/config/config.ts && nodemon src/server.ts",
     "startdb": "npx sequelize db:create && npx sequelize-cli db:migrate",
     "restartdb": "npx sequelize db:drop && npx sequelize db:create && npx sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
