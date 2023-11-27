@@ -8,8 +8,10 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/"
-        }
+            "routes": [
+              { "handle": "src/Server.ts", "src": "/.*", "dest": "/Server.ts" }
+            ]
+          }
+          
     ]
 }
