@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "CI=false",
-    "start": "ts-node --ignore node_modules src/server.ts",
+    "start": "tsc ts-node --ignore node_modules src/server.ts",
     "startdb": "npx sequelize db:create && npx sequelize-cli db:migrate",
     "restartdb": "npx sequelize db:drop && npx sequelize db:create && npx sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
