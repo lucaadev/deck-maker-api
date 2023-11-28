@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
+import 'dotenv/config';
 import CardController from './controllers/card';
 import DeckController from './controllers/deck';
-//import USerController from './controllers/user';
 import { Request, Response } from 'express';
 
 class App {
@@ -26,9 +26,9 @@ class App {
 
     private config(): void {
         const accessControl: express.RequestHandler = (_req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Methods', '*');
-            res.header('Access-Control-Allow-Headers', '*');
+            res.header('Access-Control-Allow-Origin', process.env.REACT_APP_FRONTEND_URL);
+            res.header('Access-Control-Allow-Methods', "*");
+            res.header('Access-Control-Allow-Headers', process.env.REACT_APP_FRONTEND_URL);
             next();
         };
 
