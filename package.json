@@ -7,8 +7,8 @@
     "node": ">=12"
   },
   "scripts": {
-    "build": "CI=false",
-    "start": "NODE_ENV=production tsc src/ ts-node src/server.ts",
+    "build": "CI=false NODE_ENV=production tsc ",
+    "start": "NODE_ENV=production ts-node src/server.ts",
     "startdb": "npx sequelize db:create && npx sequelize-cli db:migrate",
     "restartdb": "npx sequelize db:drop && npx sequelize db:create && npx sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
