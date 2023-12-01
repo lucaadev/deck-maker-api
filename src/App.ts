@@ -15,10 +15,10 @@ class App {
         this.app.use(
             cors({
                 methods: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
-              origin: process.env.FRONTEND_URL
+                origin: process.env.FRONTEND_URL
             })
           );
-        this.app.get('/', (_request: Request, response: Response) => response.send({ ok: true }));
+        this.app.get('/', (_request: Request, response: Response) => response.send({ ok: 'Super OK' }));
 
         //this.app.post('/login', DeckController.createDeck);
         this.app.get('/colection', CardController.getCards);
