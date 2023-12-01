@@ -4,6 +4,7 @@ import 'dotenv/config';
 import CardController from './controllers/card';
 import DeckController from './controllers/deck';
 import { Request, Response } from 'express';
+import { get } from 'http';
 
 class App {
     public app: express.Express;
@@ -11,8 +12,12 @@ class App {
     constructor() {
         this.app = express();
         this.app.use(express.json());
-        this.app.use(cors());
-        this.config();
+        this.app.use(
+            cors({
+                methods: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
+              origin: process.env.FRONTEND_URL
+            })
+          );
         this.app.get('/', (_request: Request, response: Response) => response.send({ ok: true }));
 
         //this.app.post('/login', DeckController.createDeck);
@@ -22,19 +27,6 @@ class App {
         this.app.post('/creation', CardController.createCard);
         this.app.delete('/colection/:id?', CardController.deleteCard);
         this.app.delete('/decks/:id?', DeckController.deleteDeck);
-    }
-
-    private config(): void {
-        const accessControl: express.RequestHandler = (_req, res, next) => {
-            console.log('chamooooou');
-            
-            res.header('Access-Control-Allow-Origin', 'https://deck-maker.vercel.app');
-            res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
-            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-            next();
-        };
-    
-        this.app.use(accessControl);
     }
 
     public start(PORT: string | number): void {
