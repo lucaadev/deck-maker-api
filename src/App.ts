@@ -26,9 +26,9 @@ class App {
 
     private config(): void {
         const accessControl: express.RequestHandler = (_req, res, next) => {
-            res.header('Access-Control-Allow-Origin', "https://deck-maker-api-production.up.railway.app/" || process.env.REACT_APP_FRONTEND_URL);
+            res.header('Access-Control-Allow-Origin', "https://deck-maker.vercel.app/");
             res.header('Access-Control-Allow-Methods', "*");
-            res.header('Access-Control-Allow-Headers', "https://deck-maker-api-production.up.railway.app/" || process.env.REACT_APP_FRONTEND_URL);
+            res.header('Access-Control-Allow-Headers', "https://deck-maker.vercel.app/");
             next();
         };
 
