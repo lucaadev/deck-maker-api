@@ -12,12 +12,7 @@ class App {
     constructor() {
         this.app = express();
         this.app.use(express.json());
-        this.app.use(
-            cors({
-                methods: ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
-                origin: process.env.FRONTEND_URL
-            })
-          );
+        this.config();
         this.app.get('/', (_request: Request, response: Response) => response.send({ ok: 'Super OK' }));
 
         //this.app.post('/login', DeckController.createDeck);
@@ -32,6 +27,19 @@ class App {
     public start(PORT: string | number): void {
         this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
     }
+
+    private config(): void {
+        const accessControl: express.RequestHandler = (_req, res, next) => {
+            console.log('chamooooou');
+
+            res.header('Access-Control-Allow-Origin', 'https://deck-maker.vercel.app');
+            res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+            next();
+        };
+    
+        this.app.use(accessControl);
+}
 }
 
 export { App };
