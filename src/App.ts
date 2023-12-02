@@ -13,7 +13,7 @@ class App {
         this.app.use(express.json());
         this.app.use(cors);
         this.config();
-        this.app.get('/', (_request: Request, response: Response) => response.send({ ok: 'Super OK' }));
+        this.app.get('/', (_request: Request, response: Response) => response.status(200).send({ ok: 'Super OK' }));
 
         //this.app.post('/login', DeckController.createDeck);
         this.app.get('/colection', CardController.getCards);
