@@ -11,8 +11,8 @@ class App {
     constructor() {
         this.app = express();
         this.app.use(express.json());
-        this.app.use(cors);
         this.config();
+        this.app.use(cors());
         this.app.get('/', (_request: Request, response: Response) => response.status(200).send({ ok: 'Super OK' }));
 
         //this.app.post('/login', DeckController.createDeck);
