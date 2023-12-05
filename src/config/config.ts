@@ -3,8 +3,8 @@ import { Options } from 'sequelize';
 
 export const config: Options = {
   dialect: "mysql",
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  host: process.env.DB_HOST,
+  username: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  host: process.env.MYSQLHOST,
 };
