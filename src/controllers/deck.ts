@@ -11,7 +11,7 @@ class DeckController {
             return response.status(201).json(created);
         } catch (error: any) {
             const { status, message } = error;
-            console.log("Aqui", status, message);
+            console.log("Aqui", error);
             return response.status(status).json(message);
         }
     }

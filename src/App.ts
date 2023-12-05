@@ -30,7 +30,7 @@ class App {
 
     private config(): void {
         const accessControl: express.RequestHandler = (_req, res, next) => {
-            res.header('Access-Control-Allow-Origin', 'https://deck-maker.vercel.app');
+            res.setHeader('Access-Control-Allow-Origin', 'https://deck-maker.vercel.app');
             res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
             res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
             next();
