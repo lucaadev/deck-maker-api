@@ -1,6 +1,10 @@
 import { Sequelize } from "sequelize";
-import { config } from '../config/config';
+import 'dotenv/config';
 
-const sequelize = new Sequelize(config);
+const envi = process.env;
+
+const sequelize = new Sequelize(
+    `mysql://${envi.DB_USER}:${envi.DB_PASSWORD}@${envi.DB_HOST}/${envi.DB_NAME}`
+);
 
 export default sequelize;

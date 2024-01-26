@@ -11,10 +11,8 @@ class App {
     constructor() {
         this.app = express();
         this.app.use(express.json());
-        this.app.use(cors({
-            origin: 'https://deck-maker.vercel.app'
-        }));
         this.config();
+        this.app.use(cors());
         this.app.get('/', (_request: Request, response: Response) => response.status(200).send({ ok: 'Super OK' }));
 
         //this.app.post('/login', DeckController.createDeck);
@@ -32,6 +30,7 @@ class App {
 
     private config(): void {
         const accessControl: express.RequestHandler = (_req, res, next) => {
+            res.header('Access-Control-Allow-Origin', process.env.APP_FRONTEND_URL)
             res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
             res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
             next();

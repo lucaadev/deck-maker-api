@@ -6,12 +6,10 @@ class DeckController {
         try {
             const data = request.body;
             const created = await DeckService.createDeckS(data);
-            console.log("Aqui");
             
             return response.status(201).json(created);
         } catch (error: any) {
             const { status, message } = error;
-            console.log("Aqui", error);
             return response.status(status).json(message);
         }
     }

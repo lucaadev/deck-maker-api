@@ -7,7 +7,6 @@ class CardController {
             const data = request.body;
 
             const created = await CardService.createCardS(data);
-            
             return response.status(201).json(created);
         } catch (error: any) {
             const { status, message } = error;
@@ -20,6 +19,8 @@ class CardController {
             const cards = await CardService.getCardsS();
             return response.status(200).json(cards);
         } catch (error: any) {
+            console.log(error);
+            
             const { status, message } = error;
             return response.status(status).json(message);
         }
