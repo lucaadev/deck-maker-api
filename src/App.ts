@@ -10,18 +10,11 @@ class App {
 
     constructor() {
         this.app = express();
-        this.app.use(express.json());
         this.config();
+        this.app.use(express.json());
         this.app.use(cors());
         this.app.get('/', (_request: Request, response: Response) => response.status(200).send({ ok: 'Super OK' }));
 
-        //this.app.post('/login', DeckController.createDeck);
-        this.app.get('/colection', CardController.getCards);
-        this.app.get('/decks', DeckController.getDecks);
-        this.app.post('/', DeckController.createDeck);
-        this.app.post('/creation', CardController.createCard);
-        this.app.delete('/colection/:id?', CardController.deleteCard);
-        this.app.delete('/decks/:id?', DeckController.deleteDeck);
     }
 
     public start(PORT: number): void {
@@ -36,6 +29,13 @@ class App {
             next();
         };
         this.app.use(accessControl);
+        this.app.use(express.json());
+        this.app.get('/colection', CardController.getCards);
+        this.app.get('/decks', DeckController.getDecks);
+        this.app.post('/', DeckController.createDeck);
+        this.app.post('/creation', CardController.createCard);
+        this.app.delete('/colection/:id?', CardController.deleteCard);
+        this.app.delete('/decks/:id?', DeckController.deleteDeck);
     }
 }
 
