@@ -2,7 +2,7 @@
   "name": "backend_deck_maker",
   "version": "1.0.0",
   "description": "backend para interação com um banco de dados",
-  "main": "server.ts",
+  "main": "/src/server.tsserver.ts",
   "engines": {
     "node": ">=12"
   },
