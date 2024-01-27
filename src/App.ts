@@ -24,7 +24,7 @@ class App {
         this.app.delete('/decks/:id?', DeckController.deleteDeck);
     }
 
-    public start(PORT: string | number): void {
+    public start(PORT: number): void {
         this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
     }
 

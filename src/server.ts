@@ -2,7 +2,7 @@ import { App } from './App';
 import 'dotenv/config';
 declare var process : {
     env: {
-      PORT: string
+      PORT: number
     }
   }
 
