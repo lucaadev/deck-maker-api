@@ -7,7 +7,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "build": "CI=false tsc && tsc src/config/config.ts",
+    "build": "CI=false tsc",
     "start": "nodemon src/server.ts",
     "startdb": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "restartdb": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate --env=development",
